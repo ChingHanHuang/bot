@@ -13,6 +13,9 @@ SITE_URL = "https://gisweb.taipei.gov.tw/TPCamp/Default.aspx"
 LOGIN_INFO = "login_info.json"
 ACCOUNT = "account"
 PASSWORD = "password"
+CAMPING_DATE = "16"
+NUM_OF_PPL = "2"
+AREA_OPTIONS = ["area_H56", "area_H78", "area_H34", "area_H12", "area_J2", "area_J4"]
 
 # Launch browser
 chrome_service = Service("/vboxuser/repos/driver")
@@ -52,17 +55,18 @@ driver.find_element(By.LINK_TEXT, "登入").click()
 f.close()
 
 # Book Bishan camping area
+time.sleep(2)
 wait.until(EC.element_to_be_clickable((By.ID, "MainContent_BT_BishanBooking"))) 
 driver.find_element(By.ID, "MainContent_BT_BishanBooking").click()
 
 wait.until(EC.element_to_be_clickable((By.ID, "MainContent_TB_InTime_general"))) 
-# campTime = driver.find_element(By.ID, "MainContent_TB_InTime_general")
-# campTime.clear()
-# campTime.send_keys("2023/03/03")
+driver.find_element(By.ID, "MainContent_TB_InTime_general").click()
+wait.until(EC.element_to_be_clickable((By.LINK_TEXT, CAMPING_DATE))) 
+driver.find_element(By.LINK_TEXT, CAMPING_DATE).click()
 
 numOfPpl = driver.find_element(By.ID, "MainContent_TB_TNum_general")
 numOfPpl.clear()
-numOfPpl.send_keys("2")
+numOfPpl.send_keys(NUM_OF_PPL)
 
 
 
@@ -71,5 +75,4 @@ numOfPpl.send_keys("2")
 
 
 # extract config file and input data
-# sleap vs webdriver wait
-# How to insert date
+# sleep vs webdriver wait

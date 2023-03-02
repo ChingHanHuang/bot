@@ -18,7 +18,7 @@ CAMPING_DATE = "1"
 NUM_OF_PARTY = "2"
 AREA_OPTIONS = "camping_bot_config.json"
 BEGIN_TIME = time(12, 0)
-END_TIME = time(17, 58)
+END_TIME = time(12, 5)
 
 # Launch browser
 chrome_service = Service("/vboxuser/repos/driver")
